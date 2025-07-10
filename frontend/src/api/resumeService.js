@@ -6,15 +6,15 @@ export default class ResumeRankingClient {
   /**
    * Upload resumes and job description for ranking
    * @param {FileList} resumeFiles - List of PDF files
-   * @param {string} jobDescription - Job description text
+   * @param {string} job_description - Job description text
    * @returns {Promise<Object>} Response with job_id and status
    */
-  async uploadResumes(resumeFiles, jobDescription) {
+  async uploadResumes(resumeFiles, job_description) {
     try {
       const formData = new FormData();
 
       // Add job description
-      formData.append("job_description", jobDescription);
+      formData.append("job_description", job_description);
 
       // Add resume files
       for (let i = 0; i < resumeFiles.length; i++) {

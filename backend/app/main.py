@@ -134,7 +134,7 @@ async def process_resumes_async(job_id: str, file_paths: List[str], job_descript
                 extracted_resumes.append({
                     "file_path": file_path,
                     "filename": Path(file_path).name,
-                    "original_name": Path(file_path).name,  # You might want to store original names
+                    "original_name": Path(file_path).name,
                     "text_content": text_content
                 })
                 
@@ -144,7 +144,6 @@ async def process_resumes_async(job_id: str, file_paths: List[str], job_descript
                 
             except Exception as e:
                 logger.error(f"Error extracting text from {file_path}: {str(e)}")
-                # Continue processing other files
                 continue
         
         if not extracted_resumes:

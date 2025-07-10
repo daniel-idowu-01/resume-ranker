@@ -4,7 +4,7 @@ import { formatFileSize } from "../utils/helpers";
 
 const UploadForm = ({ onSubmit }) => {
   const [resumes, setResumes] = useState([]);
-  const [jobDescription, setJobDescription] = useState("");
+  const [job_description, setjob_description] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [errors, setErrors] = useState({});
   const [isDragging, setIsDragging] = useState(false);
@@ -68,10 +68,10 @@ const UploadForm = ({ onSubmit }) => {
     handleFileValidation(files);
   };
 
-  const handleJobDescriptionChange = (e) => {
-    setJobDescription(e.target.value);
+  const handlejob_descriptionChange = (e) => {
+    setjob_description(e.target.value);
     if (e.target.value.trim()) {
-      setErrors((prev) => ({ ...prev, jobDescription: null }));
+      setErrors((prev) => ({ ...prev, job_description: null }));
     }
   };
 
@@ -86,8 +86,8 @@ const UploadForm = ({ onSubmit }) => {
       newErrors.resumes = "Please upload at least one resume";
     }
 
-    if (!jobDescription.trim()) {
-      newErrors.jobDescription = "Job description is required";
+    if (!job_description.trim()) {
+      newErrors.job_description = "Job description is required";
     }
 
     setErrors(newErrors);
@@ -108,13 +108,13 @@ const UploadForm = ({ onSubmit }) => {
         formData.append(`resumes`, resume);
       });
 
-      formData.append("jobDescription", jobDescription);
+      formData.append("job_description", job_description);
 
       await onSubmit(formData);
 
       // Reset form on success
       setResumes([]);
-      setJobDescription("");
+      setjob_description("");
       setErrors({});
     } catch (error) {
       setErrors((prev) => ({
@@ -237,17 +237,19 @@ const UploadForm = ({ onSubmit }) => {
           </label>
           <textarea
             id="job-description"
-            value={jobDescription}
-            onChange={handleJobDescriptionChange}
+            value={job_description}
+            onChange={handlejob_descriptionChange}
             rows={8}
             className={`w-full px-3 py-2 border ${
-              errors.jobDescription ? "border-red-300" : "border-gray-300"
+              errors.job_description ? "border-red-300" : "border-gray-300"
             } rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all`}
             placeholder="Paste the job description here..."
             disabled={isUploading}
           />
-          {errors.jobDescription && (
-            <p className="mt-2 text-sm text-red-600">{errors.jobDescription}</p>
+          {errors.job_description && (
+            <p className="mt-2 text-sm text-red-600">
+              {errors.job_description}
+            </p>
           )}
         </div>
 
@@ -256,7 +258,7 @@ const UploadForm = ({ onSubmit }) => {
           <button
             type="submit"
             disabled={
-              isUploading || resumes.length === 0 || !jobDescription.trim()
+              isUploading || resumes.length === 0 || !job_description.trim()
             }
             className={`w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${
               isUploading ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"

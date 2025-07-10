@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const ResultsComp = ({ results, jobDescription, onNewSearch }) => {
+const ResultsComp = ({ results, job_description, onNewSearch }) => {
   const [sortBy, setSortBy] = useState("score");
   const [sortOrder, setSortOrder] = useState("desc");
   const [selectedCandidate, setSelectedCandidate] = useState(null);
@@ -240,7 +240,7 @@ const ResultsComp = ({ results, jobDescription, onNewSearch }) => {
             Job Description Summary
           </h2>
           <p className="text-gray-700 text-sm line-clamp-3">
-            {jobDescription?.substring(0, 200)}...
+            {job_description?.substring(0, 200)}...
           </p>
         </div>
       </div>

@@ -53,7 +53,7 @@ function ResultsPage() {
     ],
   };
 
-  const mockJobDescription = `We are hiring a backend engineer to build AI-powered APIs for resume ranking. Must have experience with Python, FastAPI, MongoDB, and OpenAI tools.`;
+  const mockjob_description = `We are hiring a backend engineer to build AI-powered APIs for resume ranking. Must have experience with Python, FastAPI, MongoDB, and OpenAI tools.`;
 
   const handleNewSearch = () => {
     // Redirect or reset logic goes here
@@ -64,7 +64,7 @@ function ResultsPage() {
     <div className="min-h-screen bg-gray-100">
       <ResultsComp
         results={mockResults}
-        jobDescription={mockJobDescription}
+        job_description={mockjob_description}
         onNewSearch={handleNewSearch}
       />
     </div>
