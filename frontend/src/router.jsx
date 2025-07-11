@@ -8,7 +8,7 @@ const router = createBrowserRouter([
     element: <UploadPage />,
   },
   {
-    path: "/results",
+    path: "/results/:id",
     element: <ResultsPage />,
   },
 ]);
