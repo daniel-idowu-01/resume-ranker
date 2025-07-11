@@ -1,7 +1,11 @@
-import React from "react";
+import { useEffect } from "react";
 import ResultsComp from "../components/ResultsComp";
+import { useLocation, useParams } from "react-router-dom";
 
 function ResultsPage() {
+  const location = useLocation();
+  const state = location.state || {};
+
   const mockResults = {
     candidates: [
       {
@@ -54,6 +58,29 @@ function ResultsPage() {
   };
 
   const mockjob_description = `We are hiring a backend engineer to build AI-powered APIs for resume ranking. Must have experience with Python, FastAPI, MongoDB, and OpenAI tools.`;
+
+  const handleFetch = async () => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/job-results/${state.jobId}`
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      console.log("Response status 11:", data);
+    } catch (error) {
+      console.error("Error fetching job results:", error);
+      return;
+    }
+  };
+
+  useEffect(() => {
+    handleFetch();
+  }, []);
 
   const handleNewSearch = () => {
     // Redirect or reset logic goes here

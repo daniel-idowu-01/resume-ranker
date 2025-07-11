@@ -22,7 +22,7 @@ const UploadPage = () => {
       console.log("Upload successful:", result.job_id);
 
       navigate(`/results/${result.job_id}`, {
-        state: { jobId: result.job_id },
+        state: { jobId: result.job_id, status: result.status },
       });
     } catch (error) {
       console.error("Upload failed:", error);

@@ -67,6 +67,8 @@ async def process_resumes_async(job_id: str, file_paths: List[str], job_descript
                 
                 # Parse resume to extract structured data
                 parsed_data = await parse_resume(resume['text_content'])
+                logger.info(f"Parsed data for {resume['filename']}: {parsed_data}")
+                
                 
                 parsed_resumes.append({
                     **resume,
